@@ -8,6 +8,7 @@ import requests
 from PIL import Image
 import easyocr
 from sentence_transformers import SentenceTransformer
+import os
 
 with open("all_chunks.json", "r", encoding="utf-8") as f:
     chunks = json.load(f)
@@ -93,4 +94,5 @@ def answer():
         return jsonify({"error": "Failed to process request", "details": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
