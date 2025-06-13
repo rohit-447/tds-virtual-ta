@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: tds-flask-app
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    plan: free
+    region: oregon
+    runtime: python
